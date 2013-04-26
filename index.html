@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Jmatch3 by hugeen</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Jmatch3</h1>
+        <h2>Javascript Match-3 Game Lib</h2>
+        <a href="https://github.com/hugeen/jmatch3" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>jMatch3</h1>
+
+<p>Javascript Match-3 Game Lib - Node.JS and Browser compatible</p>
+
+<h2>How to use ?</h2>
+
+<h3>Create a new Grid with width, height and gravity parameters :</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">grid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jMatch3</span><span class="p">.</span><span class="nx">Grid</span><span class="p">({</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nx">gravity</span><span class="o">:</span> <span class="s2">"down"</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>Get a piece inside the grid</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">piece</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">getPiece</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span> <span class="p">});</span>
+</pre></div>
+
+<h3>Update a piece</h3>
+
+<p>A piece has a void object by default, but you can change it with your own</p>
+
+<div class="highlight"><pre><span class="nx">piece</span><span class="p">.</span><span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">"gem"</span> <span class="p">};</span><span class="o">-</span>
+</pre></div>
+
+<p>Or revert to the void object</p>
+
+<div class="highlight"><pre><span class="nx">piece</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+</pre></div>
+
+<p>The void Object type is "empty"</p>
+
+<h3>Display the grid (Debug)</h3>
+
+<p>You can log the grid with a map of symbols</p>
+
+<div class="highlight"><pre><span class="nx">grid</span><span class="p">.</span><span class="nx">debug</span><span class="p">({</span>
+    <span class="nx">empty</span><span class="o">:</span> <span class="s2">"-"</span><span class="p">,</span>
+    <span class="nx">gem</span><span class="o">:</span> <span class="s2">"g"</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>Handle matches</h3>
+
+<p>You can get all current matches</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">matches</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">getMatches</span><span class="p">();</span>
+</pre></div>
+
+<p>Clear matches to transform all matching pieces object to void object</p>
+
+<div class="highlight"><pre><span class="nx">grid</span><span class="p">.</span><span class="nx">clearMatches</span><span class="p">();</span>
+</pre></div>
+
+<p>Apply gravity to fall down your pieces</p>
+
+<div class="highlight"><pre><span class="nx">grid</span><span class="p">.</span><span class="nx">applyGravity</span><span class="p">();</span>
+</pre></div>
+
+<h2>API Documentation</h2>
+
+<h3>Grid</h3>
+
+<div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * options:</span>
+<span class="cm"> * - width (default 10)</span>
+<span class="cm"> * - height (default 10)</span>
+<span class="cm"> * - gravity (default false): "up", "right", "down", "left", or false </span>
+<span class="cm"> */</span>
+<span class="kd">var</span> <span class="nx">grid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jMatch3</span><span class="p">.</span><span class="nx">Grid</span><span class="p">({</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nx">gravity</span><span class="o">:</span> <span class="s2">"down"</span>
+<span class="p">});</span>
+</pre></div>
+
+<h4>Instance methods</h4>
+
+<h5>.coordsInWorld(coords)</h5>
+
+<p>Return if given coords are in the grid</p>
+
+<div class="highlight"><pre><span class="nx">grid</span><span class="p">.</span><span class="nx">coordsInWorld</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span> <span class="p">});</span> <span class="c1">// return false</span>
+</pre></div>
+
+<h5>.getPiece(coords)</h5>
+
+<p>Return the piece from given coords</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">piece</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">getPiece</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">4</span> <span class="p">});</span>
+</pre></div>
+
+<h5>.neighbourOf(piece, direction)</h5>
+
+<p>Return the piece neighbour of another piece from a given direction</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">neighbour</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">neighbourOf</span><span class="p">(</span><span class="nx">piece</span><span class="p">,</span> <span class="s2">"left"</span><span class="p">);</span>
+</pre></div>
+
+<h5>.neighboursOf(piece)</h5>
+
+<p>Return a Hash of pieces by direction</p>
+
+<div class="highlight"><pre><span class="c1">// return { up: theUpPiece, down: theDownPiece, right: theRightPiece, left: theLeftPiece }</span>
+<span class="kd">var</span> <span class="nx">neighbours</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">neighboursOf</span><span class="p">(</span><span class="nx">piece</span><span class="p">);</span>
+</pre></div>
+
+<h5>.forEachMatch(callback)</h5>
+
+<p>Execute a callback for each current match</p>
+
+<div class="highlight"><pre><span class="nx">grid</span><span class="p">.</span><span class="nx">forEachMatch</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Your scoring stuff</span>
+<span class="p">});</span>
+</pre></div>
+
+<h5>.getMatches()</h5>
+
+<p>Return an array of matches or false</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">matches</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">getMatches</span><span class="p">();</span>
+</pre></div>
+
+<h5>.getRow(row, reverse)</h5>
+
+<p>Return an Array of pieces</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">getRow</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+<h5>.getColumn(column, reverse)</h5>
+
+<p>Return an Array of pieces</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">column</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">getColumn</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+<h5>.clearMatches()</h5>
+
+<p>Destroy all matches and update the grid</p>
+
+<div class="highlight"><pre><span class="nx">grid</span><span class="p">.</span><span class="nx">clearMatches</span><span class="p">();</span>
+</pre></div>
+
+<h5>.swapPieces(piece1, piece2)</h5>
+
+<p>Swap 2 pieces object</p>
+
+<div class="highlight"><pre><span class="nx">grid</span><span class="p">.</span><span class="nx">swapPieces</span><span class="p">(</span><span class="nx">piece1</span><span class="p">,</span> <span class="nx">piece2</span><span class="p">);</span>
+</pre></div>
+
+<h5>.applyGravity()</h5>
+
+<p>Apply gravity to fall down your pieces and return an Array of falling pieces</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fallingPieces</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">applyGravity</span><span class="p">();</span>
+</pre></div>
+
+<h5>.debug(symbols)</h5>
+
+<p>Log the current grid with symbols</p>
+
+<div class="highlight"><pre><span class="nx">grid</span><span class="p">.</span><span class="nx">debug</span><span class="p">({</span>
+    <span class="nx">empty</span><span class="o">:</span> <span class="s2">"-"</span><span class="p">,</span>
+    <span class="nx">gem</span><span class="o">:</span> <span class="s2">"g"</span>
+<span class="p">});</span>
+</pre></div>
+
+<h4>Class method</h4>
+
+<h5>.getLastEmptyPiece()</h5>
+
+<p>Get last empty piece from an Array of pieces</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">lastEmpty</span> <span class="o">=</span> <span class="nx">jMatch3</span><span class="p">.</span><span class="nx">Grid</span><span class="p">.</span><span class="nx">getLastEmptyPiece</span><span class="p">(</span><span class="nx">pieces</span><span class="p">);</span>
+</pre></div>
+
+<h3>Piece</h3>
+
+<p>Private Class</p>
+
+<div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Params:</span>
+<span class="cm"> * - grid</span>
+<span class="cm"> * - x</span>
+<span class="cm"> * - y</span>
+<span class="cm"> */</span>
+<span class="k">new</span> <span class="nx">Piece</span><span class="p">(</span><span class="nx">grid</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+<h4>Instance methods</h4>
+
+<h5>.clear()</h5>
+
+<p>Replace the piece object by a the void object</p>
+
+<div class="highlight"><pre><span class="nx">piece</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+</pre></div>
+
+<h5>.relativeCoordinates(direction, distance)</h5>
+
+<p>Return relatives coordinates to the piece</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">relativeCoordinates</span> <span class="o">=</span> <span class="nx">piece</span><span class="p">.</span><span class="nx">relativeCoordinates</span><span class="p">(</span><span class="s2">"right"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// return { x: 1, y: 0 }</span>
+</pre></div>
+
+<h5>.neighbour(direction)</h5>
+
+<p>Return neighbour of the piece from a given direction</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">neighbour</span> <span class="o">=</span> <span class="nx">piece</span><span class="p">.</span><span class="nx">neighbour</span><span class="p">(</span><span class="s2">"right"</span><span class="p">);</span>
+</pre></div>
+
+<h5>.neighbours()</h5>
+
+<p>Return a Hash of pieces by direction</p>
+
+<div class="highlight"><pre><span class="c1">// return { up: theUpPiece, down: theDownPiece, right: theRightPiece, left: theLeftPiece }</span>
+<span class="kd">var</span> <span class="nx">neighbours</span> <span class="o">=</span> <span class="nx">piece</span><span class="p">.</span><span class="nx">neighbours</span><span class="p">();</span>
+</pre></div>
+
+<h5>.matchingNeighbours()</h5>
+
+<p>Return an Array of direct Matching Neighbours</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">matchingNeighbours</span> <span class="o">=</span> <span class="nx">piece</span><span class="p">.</span><span class="nx">matchingNeighbours</span><span class="p">();</span>
+</pre></div>
+
+<h5>.deepMatchingNeighbours()</h5>
+
+<p>Return an Array of deep Matching Neighbours</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">deepMatchingNeighbours</span> <span class="o">=</span> <span class="nx">piece</span><span class="p">.</span><span class="nx">deepMatchingNeighbours</span><span class="p">();</span>
+</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/hugeen/jmatch3/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/hugeen/jmatch3/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/hugeen/jmatch3"></a> is maintained by <a href="https://github.com/hugeen">hugeen</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-28735941-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
