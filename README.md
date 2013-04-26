@@ -69,32 +69,123 @@ grid.applyGravity();
 
 ### Grid
 
+```javascript
+/*
+ * options:
+ * - width (default 10)
+ * - height (default 10)
+ * - gravity (default false): "up", "right", "down", "left", or false 
+ */
+var grid = new Grid({
+    width: 6,
+    height: 7,
+    gravity: "down"
+});
+```
+
 #### Instance methods
 
 ##### .coordsInWorld(coords)
 
+Return if given coords are in the grid
+
+```javascript
+grid.coordsInWorld({ x: 10, y: 10 }); // return false
+```
+
 ##### .getPiece(coords)
+
+Return the piece from given coords
+
+```javascript
+var piece = grid.getPiece({ x: 4, y: 4 });
+```
 
 ##### .neighbourOf(piece, direction)
 
+Return the piece neighbour of another piece from a given direction
+
+```javascript
+var neighbour = grid.neighbourOf(piece, "left");
+```
+
 ##### .neighboursOf(piece)
+
+Return a Hash of pieces by direction
+
+```javascript
+// return { up: theUpPiece, down: theDownPiece, right: theRightPiece, left: theLeftPiece }
+var neighbours = grid.neighboursOf(piece);
+```
 
 ##### .forEachMatch(callback)
 
+Execute a callback for each current match
+
+```javascript
+grid.forEachMatch(function() {
+  // Your scoring stuff
+});
+```
+
 ##### .getMatches()
+
+Return an array of matches or false
+
+```javascript
+var matches = grid.getMatches();
+```
 
 ##### .getRow(row, reverse)
 
+Return an Array of pieces
+
+```javascript
+var row = grid.getRow(0);
+```
+
 ##### .getColumn(column, reverse)
+
+Return an Array of pieces
+
+```javascript
+var column = grid.getColumn(0);
+```
 
 ##### .clearMatches()
 
+Destroy all matches and update the grid
+
+```javascript
+grid.clearMatches();
+```
+
 ##### .swapPieces(piece1, piece2)
+
+Swap 2 pieces object
+
+```javascript
+grid.swapPieces(piece1, piece2);
+```
 
 ##### .applyGravity()
 
-##### .debug()
+Apply gravity to fall down your pieces and return an Array of falling pieces
 
+```javascript
+var fallingPieces = grid.applyGravity();
+```
+
+##### .debug(symbols)
+
+Log the current grid with symbols
+
+```javascript
+grid.debug({
+    empty: "-",
+    gem: "g"
+});
+```
 
 #### Class method
 
