@@ -202,7 +202,13 @@ var lastEmpty = jMatch3.Grid.getLastEmptyPiece(pieces);
 Private Class
 
 ```javascript
-new Piece(grid, x, y);
+/*
+ * Params:
+ * - grid
+ * - x
+ * - y
+ */
+new Piece(grid, 0, 0);
 ```
 
 #### Instance methods
