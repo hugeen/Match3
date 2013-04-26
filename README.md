@@ -15,13 +15,13 @@ var grid = new jMatch3.Grid({
 });
 ```
 
-### Get a piece inside the Grid
+### Get a piece inside the grid
 
 ```javascript
 var piece = grid.getPiece({ x: 0, y: 0 });
 ```
 
-### Piece object
+### Update a piece
 
 A piece has a void object by default, but you can change it with your own
 
@@ -37,7 +37,7 @@ piece.clear();
 
 The void Object type is "empty"
 
-### Display the Grid (Debug)
+### Display the grid (Debug)
 
 You can log the grid with a map of symbols
 
@@ -76,7 +76,7 @@ grid.applyGravity();
  * - height (default 10)
  * - gravity (default false): "up", "right", "down", "left", or false 
  */
-var grid = new Grid({
+var grid = new jMatch3.Grid({
     width: 6,
     height: 7,
     gravity: "down"
@@ -191,19 +191,67 @@ grid.debug({
 
 ##### .getLastEmptyPiece()
 
+Get last empty piece from an Array of pieces
+
+```javascript
+var lastEmpty = jMatch3.Grid.getLastEmptyPiece(pieces);
+```
+
 ### Piece
+
+Private Class
+
+```javascript
+new Piece(grid, x, y);
+```
 
 #### Instance methods
 
 ##### .clear()
 
+Replace the piece object by a the void object
+
+```javascript
+piece.clear();
+```
+
 ##### .relativeCoordinates(direction, distance)
+
+Return relatives coordinates to the piece
+
+```javascript
+var relativeCoordinates = piece.relativeCoordinates("right", 1); // return { x: 1, y: 0 }
+```
 
 ##### .neighbour(direction)
 
+Return neighbour of the piece from a given direction
+
+```javascript
+var neighbour = piece.neighbour("right");
+```
+
 ##### .neighbours()
+
+Return a Hash of pieces by direction
+
+```javascript
+// return { up: theUpPiece, down: theDownPiece, right: theRightPiece, left: theLeftPiece }
+var neighbours = piece.neighbours();
+```
 
 ##### .matchingNeighbours()
 
+Return an Array of direct Matching Neighbours
+
+```javascript
+var matchingNeighbours = piece.matchingNeighbours();
+```
+
 ##### .deepMatchingNeighbours()
 
+Return an Array of deep Matching Neighbours
+
+```javascript
+var deepMatchingNeighbours = piece.deepMatchingNeighbours();
+```
