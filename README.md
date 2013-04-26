@@ -29,8 +29,21 @@ A piece has a void Object by default, but you can change it with your own :
 piece.object = { type: "gem" };-
 ```
 
-Or revert to the voidObject :
+Or revert to the void Object :
 
 ```javascript
 piece.clear();
+```
+
+The void Object type is "empty"
+
+### Display the Grid (Debug)
+
+You can log the grid with a map of symbols :
+
+```javascript
+grid.debug({
+    empty: "-",
+    gem: "g"
+});
 ```
