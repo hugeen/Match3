@@ -6,17 +6,10 @@
 
     function Grid(options) {
         
-        // Default options
-        options = options || {
-            width: 10,
-            height: 10,
-            gravity: false // Could be "up", "down", "left", "right" or false
-        };
-        
-        this.gravity = options.gravity;
-
-        this.height = options.height;
-        this.width = options.width;
+        options = options || {};
+        this.gravity = options.gravity || false; // Could be "up", "down", "left", "right" or false
+        this.height = options.height || 10;
+        this.width = options.width || 10;
 
         this.pieces = [];
 
