@@ -140,7 +140,7 @@
         for (var i in matches) {
             var pieces = matches[i];
             for (var p in pieces) {
-                pieces[p].object = voidObject;
+                pieces[p].clear();
             }
         }
 
@@ -263,7 +263,11 @@
         this.y = y;
         this.object = voidObject;
     }
-
+    
+    Pieces.prototype.clear = function() {
+        this.object = voidObject;
+    };
+    
     Piece.prototype.relativeCoordinates = function(direction, distance) {
         return {
             x: this.x + distance * direction.x,
