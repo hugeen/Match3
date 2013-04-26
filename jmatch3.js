@@ -257,7 +257,7 @@
         this.object = voidObject;
     }
     
-    Pieces.prototype.clear = function() {
+    Piece.prototype.clear = function() {
         this.object = voidObject;
     };
     
