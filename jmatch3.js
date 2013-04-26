@@ -140,7 +140,7 @@
         return true;
     };
 
-    // Swap 2 pieces type if not empty
+    // Swap 2 pieces object
     Grid.prototype.swapPieces = function(piece1, piece2) {
         var tmp1 = piece1.object;
         var tmp2 = piece2.object;
