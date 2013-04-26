@@ -64,3 +64,55 @@ Apply gravity to fall down your pieces
 ```javascript
 grid.applyGravity();
 ```
+
+## API Documentation
+
+### Grid
+
+#### Instance methods
+
+##### .coordsInWorld(coords)
+
+##### .getPiece(coords)
+
+##### .neighbourOf(piece, direction)
+
+##### .neighboursOf(piece)
+
+##### .forEachMatch(callback)
+
+##### .getMatches()
+
+##### .getRow(row, reverse)
+
+##### .getColumn(column, reverse)
+
+##### .clearMatches()
+
+##### .swapPieces(piece1, piece2)
+
+##### .applyGravity()
+
+##### .debug()
+
+
+#### Class method
+
+##### .getLastEmptyPiece()
+
+### Piece
+
+#### Instance methods
+
+##### .clear()
+
+##### .relativeCoordinates(direction, distance)
+
+##### .neighbour(direction)
+
+##### .neighbours()
+
+##### .matchingNeighbours()
+
+##### .deepMatchingNeighbours()
+
