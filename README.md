@@ -21,15 +21,15 @@ var grid = new jMatch3.Grid({
 var piece = grid.getPiece({ x: 0, y: 0 });
 ```
 
-### Piece Object
+### Piece object
 
-A piece has a void Object by default, but you can change it with your own :
+A piece has a void object by default, but you can change it with your own
 
 ```javascript
 piece.object = { type: "gem" };-
 ```
 
-Or revert to the void Object :
+Or revert to the void object
 
 ```javascript
 piece.clear();
@@ -39,11 +39,28 @@ The void Object type is "empty"
 
 ### Display the Grid (Debug)
 
-You can log the grid with a map of symbols :
+You can log the grid with a map of symbols
 
 ```javascript
 grid.debug({
     empty: "-",
     gem: "g"
 });
+```
+
+### Handle matches
+
+You can get all current matches
+```javascript
+var matches = grid.getMatches();
+```
+
+Clear matches to transform all matching pieces object to void object
+```javascript
+grid.clearMatches();
+```
+
+Apply gravity to fall down your pieces
+```javascript
+grid.applyGravity();
 ```
