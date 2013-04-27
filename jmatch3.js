@@ -56,7 +56,7 @@
 
     // Execute a callback for each current match
     Grid.prototype.forEachMatch = function(callback) {
-        var matches = grid.getMatches();
+        var matches = this.getMatches();
         if (matches) {
             for (var i in matches) {
                 var match = matches[i];
