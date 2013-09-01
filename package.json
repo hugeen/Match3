@@ -1,0 +1,11 @@
+{
+  "name": "jMatch3",
+  "description": "Javascript Match-3 Game Lib",
+  "version": "0.0.1",
+  "author": "Cyrille Bogaert - @hugeen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hugeen/jmatch3"
+  },
+  "main": "./jmatch3.js"
+}
