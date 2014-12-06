@@ -3,6 +3,9 @@ jMatch3
 
 Javascript Match-3 Game Lib - Node.JS and Browser compatible
 
+[http://www.pixelrebirth.net/2014/10/06/a-new-plugin-for-matching-things/#more-208](http://www.pixelrebirth.net/2014/10/06/a-new-plugin-for-matching-things/#more-208)
+[https://www.scirra.com/forum/plugin-jmatch3_t116977](https://www.scirra.com/forum/plugin-jmatch3_t116977)
+
 ## How to use ?
 
 ### Create a new Grid with width, height and gravity parameters :
@@ -74,7 +77,7 @@ grid.applyGravity();
  * options:
  * - width (default 10)
  * - height (default 10)
- * - gravity (default false): "up", "right", "down", "left", or false 
+ * - gravity (default false): "up", "right", "down", "left", or false
  */
 var grid = new jMatch3.Grid({
     width: 6,
